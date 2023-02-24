@@ -113,5 +113,14 @@ namespace Struct_prodotto
 
             return search;
         }
+
+        public bool ModNome()
+        {
+            bool conferma = false;
+
+            // ricerca
+
+            return conferma;
+        }
     }
 }
