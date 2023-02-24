@@ -14,11 +14,16 @@ namespace Struct_prodotto
 {
     public partial class Form1 : Form
     {
+        public int indice;
+        public int search;
+
         public Form1()
         {
             InitializeComponent();
             p = new prodotto[100];
             dim = 0;
+            search = 0;
+            indice = RicercaSQL();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -61,7 +66,7 @@ namespace Struct_prodotto
 
         private void salva_Click_1(object sender, EventArgs e)
         {
-            p[dim].nome = Name.Text;
+            p[dim].nome = Nome.Text;
             p[dim].prezzo = float.Parse(Price.Text);
             dim++;
             visualizza(p);
@@ -69,24 +74,40 @@ namespace Struct_prodotto
 
         private void Cancellazione_Click(object sender, EventArgs e)
         {
+            if (indice != -1)
+            {
+                p[indice].nome = "";
 
+                for (int i = indice; i < dim - 1; i++)
+                {
+                    p[i] = p[i + 1];
+                }
+
+                dim--;
+
+                visualizza(p);
+            }
+            else
+            {
+                MessageBox.Show("Prodotto non trovato");
+            }
         }
 
 
 
         // funz no-UI
-        public bool RicercaSQL()
+        public int RicercaSQL()
         {
-            bool search = true;
+            
             for (int i = 0; i < dim; i++)
             {
-                if (p[i].ToString() == Name.Text)
+                if (p[i].nome.ToString() == Nome.Text)
                 {
-                    search = true;
+                    search = i;
                 }
                 else
                 {
-                    search = false;
+                    search = -1;
                 }
             }
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Name = new System.Windows.Forms.TextBox();
+            this.Nome = new System.Windows.Forms.TextBox();
             this.Price = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,12 +37,12 @@
             this.Cancellazione = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Name
+            // Nome
             // 
-            this.Name.Location = new System.Drawing.Point(12, 28);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(100, 22);
-            this.Name.TabIndex = 0;
+            this.Nome.Location = new System.Drawing.Point(12, 28);
+            this.Nome.Name = "Nome";
+            this.Nome.Size = new System.Drawing.Size(100, 22);
+            this.Nome.TabIndex = 0;
             // 
             // Price
             // 
@@ -112,7 +112,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Price);
-            this.Controls.Add(this.Name);
+            this.Controls.Add(this.Nome);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -123,7 +123,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox Name;
+        private System.Windows.Forms.TextBox Nome;
         private System.Windows.Forms.TextBox Price;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
