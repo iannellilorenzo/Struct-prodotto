@@ -35,6 +35,7 @@
             this.listView = new System.Windows.Forms.ListView();
             this.salva = new System.Windows.Forms.Button();
             this.Cancellazione = new System.Windows.Forms.Button();
+            this.ModificaNome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Nome
@@ -101,11 +102,22 @@
             this.Cancellazione.UseVisualStyleBackColor = true;
             this.Cancellazione.Click += new System.EventHandler(this.Cancellazione_Click);
             // 
+            // ModificaNome
+            // 
+            this.ModificaNome.Location = new System.Drawing.Point(15, 151);
+            this.ModificaNome.Name = "ModificaNome";
+            this.ModificaNome.Size = new System.Drawing.Size(165, 26);
+            this.ModificaNome.TabIndex = 7;
+            this.ModificaNome.Text = "Modifica prodotto";
+            this.ModificaNome.UseVisualStyleBackColor = true;
+            this.ModificaNome.Click += new System.EventHandler(this.ModificaNome_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ModificaNome);
             this.Controls.Add(this.Cancellazione);
             this.Controls.Add(this.salva);
             this.Controls.Add(this.listView);
@@ -130,6 +142,7 @@
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.Button salva;
         private System.Windows.Forms.Button Cancellazione;
+        private System.Windows.Forms.Button ModificaNome;
     }
 }
 

@@ -93,8 +93,6 @@ namespace Struct_prodotto
             }
         }
 
-
-
         // funz no-UI
         public int RicercaSQL()
         {
@@ -118,9 +116,32 @@ namespace Struct_prodotto
         {
             bool conferma = false;
 
-            // ricerca
+            if (indice != -1)
+            {
+                conferma = true;
+            }
+            else
+            {
+                conferma = false;
+            }
 
             return conferma;
+        }
+
+        private void ModificaNome_Click(object sender, EventArgs e)
+        {
+            bool conf = ModNome();
+
+            if (conf)
+            {
+                //p[indice].nome.ToString() = Nome.Text;
+                MessageBox.Show("Nome del prodotto modificato");
+                visualizza(p);
+            }
+            else
+            {
+                MessageBox.Show("Non è stato possibile modificare il nome del prodotto");
+            }
         }
     }
 }
