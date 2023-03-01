@@ -112,36 +112,55 @@ namespace Struct_prodotto
             return search;
         }
 
-        public bool ModNome()
-        {
-            bool conferma = false;
-
-            if (indice != -1)
-            {
-                conferma = true;
-            }
-            else
-            {
-                conferma = false;
-            }
-
-            return conferma;
-        }
-
         private void ModificaNome_Click(object sender, EventArgs e)
         {
-            bool conf = ModNome();
-
-            if (conf)
+            float prezzoNuovo = 0;
+            if (indice != -1)
             {
-                //p[indice].nome.ToString() = Nome.Text;
-                MessageBox.Show("Nome del prodotto modificato");
-                visualizza(p);
+                if (Modif.Text != "")
+                {
+                    p[indice].nome = Modif.Text;
+                    visualizza(p);
+                    MessageBox.Show("Nome del prodotto modificato");
+                }
+                else
+                {
+                    MessageBox.Show("Nome del prodotto non inserito");
+                }
+
+                if (ModifPrezzo.Text != "")
+                {
+                    prezzoNuovo = p[indice].prezzo + (p[indice].prezzo * float.Parse(ModifPrezzo.Text) / 100);
+                    p[indice].prezzo = prezzoNuovo;
+                    visualizza(p);
+                    MessageBox.Show("Prezzo del prodotto modificato");
+                }
+                else
+                {
+                    MessageBox.Show("Prezzo del prodotto non inserito");
+                }
             }
             else
             {
-                MessageBox.Show("Non è stato possibile modificare il nome del prodotto");
+                MessageBox.Show("Non è stato possibile modificare il nome o il prezzo del prodotto");
             }
+        }
+
+        public float Totale()
+        {
+            float sum = 0;
+
+            for (int i = 0; i < dim; i++)
+            {
+                sum += p[i].prezzo;
+            }
+
+            return sum;
+        }
+
+        private void Somma_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Il costo totale è €" + Totale());
         }
     }
 }
