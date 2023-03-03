@@ -208,5 +208,13 @@ namespace Struct_prodotto
                 }
             }
         }
+
+        private void EliminaFile_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+        }
     }
 }
