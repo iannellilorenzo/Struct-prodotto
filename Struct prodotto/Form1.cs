@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
 
 namespace Struct_prodotto
 {
@@ -16,6 +17,7 @@ namespace Struct_prodotto
     {
         public int indice;
         public int search;
+        string path;
 
         public Form1()
         {
@@ -24,6 +26,7 @@ namespace Struct_prodotto
             dim = 0;
             search = 0;
             indice = RicercaSQL();
+            path = @"prodotti.csv";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -161,6 +164,41 @@ namespace Struct_prodotto
         private void Somma_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Il costo totale è €" + Totale());
+        }
+
+        private void SalvaFile_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter sw = new StreamWriter(path, append: false))
+            {
+                for (int i = 0; i < dim; i++)
+                {
+                    sw.WriteLine($"{p[i].nome}; €{p[i].prezzo}");
+                }
+            }
+            
+        }
+
+        private void AggiornaFile_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter sw = new StreamWriter(path, append: true))
+            {
+                for (int i = 0; i < dim; i++)
+                {
+                    sw.WriteLine($"{p[i].nome}; €{p[i].prezzo}");
+                }
+            }
+        }
+
+        private void ApriFile_Click(object sender, EventArgs e)
+        {
+            using (StreamReader sr = File.OpenText(path))
+            {
+                string s;
+                while ((s = sr.ReadLine()) != null)
+                {
+                    listView.Items.Add(s);
+                }
+            }
         }
     }
 }
