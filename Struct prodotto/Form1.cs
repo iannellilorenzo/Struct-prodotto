@@ -194,9 +194,17 @@ namespace Struct_prodotto
             using (StreamReader sr = File.OpenText(path))
             {
                 string s;
-                while ((s = sr.ReadLine()) != null)
+
+                if (!File.Exists(path))
                 {
-                    listView.Items.Add(s);
+                    MessageBox.Show("Il file non è stato creato");
+                }
+                else
+                {
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        listView.Items.Add(s);
+                    }
                 }
             }
         }
