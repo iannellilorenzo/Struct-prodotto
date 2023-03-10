@@ -184,16 +184,17 @@ namespace Struct_prodotto
 
         private void ApriFile_Click(object sender, EventArgs e)
         {
-            using (StreamReader sr = File.OpenText(path))
+            listView.Clear();
+            if (!File.Exists(path))
             {
-                string s;
+                MessageBox.Show("Il file non è stato creato");
+            }
+            else
+            {
+                using (StreamReader sr = File.OpenText(path))
+                {
+                    string s;
 
-                if (!File.Exists(path))
-                {
-                    MessageBox.Show("Il file non è stato creato");
-                }
-                else
-                {
                     while ((s = sr.ReadLine()) != null)
                     {
                         listView.Items.Add(s);
