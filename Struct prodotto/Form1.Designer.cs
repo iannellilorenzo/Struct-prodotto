@@ -48,20 +48,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.Massimo = new System.Windows.Forms.Button();
             this.Minimo = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Quant = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Nome
             // 
             this.Nome.Location = new System.Drawing.Point(9, 23);
-            this.Nome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Nome.Margin = new System.Windows.Forms.Padding(2);
             this.Nome.Name = "Nome";
             this.Nome.Size = new System.Drawing.Size(76, 20);
             this.Nome.TabIndex = 0;
             // 
             // Price
             // 
-            this.Price.Location = new System.Drawing.Point(117, 23);
-            this.Price.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Price.Location = new System.Drawing.Point(99, 22);
+            this.Price.Margin = new System.Windows.Forms.Padding(2);
             this.Price.Name = "Price";
             this.Price.Size = new System.Drawing.Size(76, 20);
             this.Price.TabIndex = 1;
@@ -80,7 +82,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(115, 7);
+            this.label2.Location = new System.Drawing.Point(96, 7);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
@@ -91,7 +93,7 @@
             // 
             this.listView.HideSelection = false;
             this.listView.Location = new System.Drawing.Point(309, 11);
-            this.listView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listView.Margin = new System.Windows.Forms.Padding(2);
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(280, 347);
             this.listView.TabIndex = 4;
@@ -102,7 +104,7 @@
             // salva
             // 
             this.salva.Location = new System.Drawing.Point(11, 67);
-            this.salva.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.salva.Margin = new System.Windows.Forms.Padding(2);
             this.salva.Name = "salva";
             this.salva.Size = new System.Drawing.Size(124, 25);
             this.salva.TabIndex = 5;
@@ -113,7 +115,7 @@
             // Cancellazione
             // 
             this.Cancellazione.Location = new System.Drawing.Point(11, 97);
-            this.Cancellazione.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cancellazione.Margin = new System.Windows.Forms.Padding(2);
             this.Cancellazione.Name = "Cancellazione";
             this.Cancellazione.Size = new System.Drawing.Size(124, 21);
             this.Cancellazione.TabIndex = 6;
@@ -124,7 +126,7 @@
             // ModificaNome
             // 
             this.ModificaNome.Location = new System.Drawing.Point(11, 123);
-            this.ModificaNome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ModificaNome.Margin = new System.Windows.Forms.Padding(2);
             this.ModificaNome.Name = "ModificaNome";
             this.ModificaNome.Size = new System.Drawing.Size(124, 21);
             this.ModificaNome.TabIndex = 7;
@@ -177,7 +179,7 @@
             // SalvaFile
             // 
             this.SalvaFile.Location = new System.Drawing.Point(9, 331);
-            this.SalvaFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SalvaFile.Margin = new System.Windows.Forms.Padding(2);
             this.SalvaFile.Name = "SalvaFile";
             this.SalvaFile.Size = new System.Drawing.Size(56, 27);
             this.SalvaFile.TabIndex = 13;
@@ -188,7 +190,7 @@
             // AggiornaFile
             // 
             this.AggiornaFile.Location = new System.Drawing.Point(70, 331);
-            this.AggiornaFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AggiornaFile.Margin = new System.Windows.Forms.Padding(2);
             this.AggiornaFile.Name = "AggiornaFile";
             this.AggiornaFile.Size = new System.Drawing.Size(86, 27);
             this.AggiornaFile.TabIndex = 14;
@@ -199,7 +201,7 @@
             // ApriFile
             // 
             this.ApriFile.Location = new System.Drawing.Point(160, 332);
-            this.ApriFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ApriFile.Margin = new System.Windows.Forms.Padding(2);
             this.ApriFile.Name = "ApriFile";
             this.ApriFile.Size = new System.Drawing.Size(56, 25);
             this.ApriFile.TabIndex = 15;
@@ -210,7 +212,7 @@
             // EliminaFile
             // 
             this.EliminaFile.Location = new System.Drawing.Point(220, 332);
-            this.EliminaFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EliminaFile.Margin = new System.Windows.Forms.Padding(2);
             this.EliminaFile.Name = "EliminaFile";
             this.EliminaFile.Size = new System.Drawing.Size(56, 25);
             this.EliminaFile.TabIndex = 16;
@@ -249,11 +251,29 @@
             this.Minimo.UseVisualStyleBackColor = true;
             this.Minimo.Click += new System.EventHandler(this.Minimo_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(189, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Quantità";
+            // 
+            // Quant
+            // 
+            this.Quant.Location = new System.Drawing.Point(192, 22);
+            this.Quant.Name = "Quant";
+            this.Quant.Size = new System.Drawing.Size(73, 20);
+            this.Quant.TabIndex = 21;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.Quant);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.Minimo);
             this.Controls.Add(this.Massimo);
             this.Controls.Add(this.label5);
@@ -274,7 +294,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Price);
             this.Controls.Add(this.Nome);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -305,6 +325,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Massimo;
         private System.Windows.Forms.Button Minimo;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox Quant;
     }
 }
 

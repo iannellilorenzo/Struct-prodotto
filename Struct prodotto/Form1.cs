@@ -15,6 +15,8 @@ namespace Struct_prodotto
     public partial class Form1 : Form
     {
         string path;
+        public prodotto[] p; // p è il nome, prodotto è il datatype
+        public int dim;
 
         public Form1()
         {
@@ -33,23 +35,7 @@ namespace Struct_prodotto
         {
             public string nome;
             public float prezzo;
-        }
-
-        public prodotto[] p; // p è il nome, prodotto è il datatype
-        public int dim;
-
-        public string prodString(prodotto p)
-        {
-            return "Nome: " + p.nome + " Prezzo: " + p.prezzo.ToString();
-        }
-
-        public void visualizza(prodotto[] pp)
-        {
-            listView.Items.Clear();
-            for (int i = 0; i < dim; i++)
-            {
-                listView.Items.Add(prodString(p[i]));
-            }
+            public int quant;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -62,15 +48,53 @@ namespace Struct_prodotto
 
         }
 
+        #region FunzioniServizio
+
+        public string prodString(prodotto p)
+        {
+            if (p.quant == 0)
+            {
+                p.quant = 1;
+            }
+
+            return $"Nome: {p.nome}; Prezzo: €{p.prezzo}; Quantità: {p.quant}";
+        }
+
+        public void visualizza(prodotto[] pp)
+        {
+            listView.Items.Clear();
+            for (int i = 0; i < dim; i++)
+            {
+                listView.Items.Add(prodString(p[i]));
+            }
+        }
+
         private void salva_Click_1(object sender, EventArgs e)
         {
             p[dim].nome = Nome.Text;
             p[dim].prezzo = float.Parse(Price.Text);
+            p[dim].quant = int.Parse(Quant.Text);
             dim++;
             visualizza(p);
         }
 
-        private void Cancellazione_Click(object sender, EventArgs e)
+        public int RicercaSQL()
+        {
+            int search = -1;
+
+            for (int i = 0; i < dim; i++)
+            {
+                if (p[i].nome == Nome.Text)
+                {
+                    search = i;
+                    break;
+                }
+            }
+
+            return search;
+        }
+
+        public void Canc()
         {
             int indice = RicercaSQL();
 
@@ -91,22 +115,7 @@ namespace Struct_prodotto
             }
         }
 
-        public int RicercaSQL()
-        {
-            int search = -1;
-            for (int i = 0; i < dim; i++)
-            {
-                if (p[i].nome == Nome.Text)
-                {
-                    search = i;
-                    break;
-                }
-            }
-
-            return search;
-        }
-
-        private void ModificaNome_Click(object sender, EventArgs e)
+        public void Mod()
         {
             int indice = RicercaSQL();
 
@@ -154,10 +163,72 @@ namespace Struct_prodotto
             return sum;
         }
 
+        public float Max()
+        {
+            float max = p[0].prezzo;
+
+            for (int i = 0; i < dim; i++)
+            {
+                if (p[i].prezzo > max)
+                {
+                    max = p[i].prezzo;
+                }
+            }
+
+            return max;
+        }
+
+        public float Min()
+        {
+            float min = p[0].prezzo;
+
+            for (int i = 0; i < dim; i++)
+            {
+                if (p[i].prezzo < min)
+                {
+                    min = p[i].prezzo;
+                }
+            }
+
+            return min;
+        }
+
+        #endregion FunzioniServizio
+
+        #region FunzioniForm
+
+        private void Cancellazione_Click(object sender, EventArgs e)
+        {
+            Canc();
+        }
+
+        private void ModificaNome_Click(object sender, EventArgs e)
+        {
+            Mod();
+        }
+
+        private void Massimo_Click(object sender, EventArgs e)
+        {
+            float max = Max();
+
+            MessageBox.Show($"Il prezzo più alto è: €{max}");
+        }
+
+        private void Minimo_Click(object sender, EventArgs e)
+        {
+            float min = Min();
+
+            MessageBox.Show($"Il prezzo più basso è: €{min}");
+        }
+
         private void Somma_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Il costo totale è €" + Totale());
         }
+
+        #endregion FunzioniForm
+
+        #region GestioneFile
 
         private void SalvaFile_Click(object sender, EventArgs e)
         {
@@ -211,49 +282,10 @@ namespace Struct_prodotto
             }
         }
 
-        public float Max()
-        {
-            float max = p[0].prezzo;
+        
 
-            for (int i = 0; i < dim; i++)
-            {
-                if (p[i].prezzo > max)
-                {
-                    max = p[i].prezzo;
-                }
-            }
+        #endregion GestioneFile
 
-            return max;
-        }
-
-        public float Min()
-        {
-            float min = p[0].prezzo;
-
-            for (int i = 0; i < dim; i++)
-            {
-                if (p[i].prezzo < min)
-                {
-                    min = p[i].prezzo;
-                }
-            }
-
-            return min;
-        }
-
-        private void Massimo_Click(object sender, EventArgs e)
-        {
-            float max = Max();
-
-            MessageBox.Show($"Il prezzo più alto è: €{max}");
-        }
-
-        private void Minimo_Click(object sender, EventArgs e)
-        {
-            float min = Min();
-
-            MessageBox.Show($"Il prezzo più basso è: €{min}");
-        }
-
+        
     }
 }
