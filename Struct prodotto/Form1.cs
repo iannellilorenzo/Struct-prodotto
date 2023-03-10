@@ -8,15 +8,12 @@ using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 
 namespace Struct_prodotto
 {
     public partial class Form1 : Form
     {
-        public int indice;
-        public int search;
         string path;
 
         public Form1()
@@ -24,8 +21,6 @@ namespace Struct_prodotto
             InitializeComponent();
             p = new prodotto[100];
             dim = 0;
-            search = 0;
-            indice = RicercaSQL();
             path = @"prodotti.csv";
         }
 
@@ -77,17 +72,17 @@ namespace Struct_prodotto
 
         private void Cancellazione_Click(object sender, EventArgs e)
         {
+            int indice = RicercaSQL();
+
             if (indice != -1)
             {
-                p[indice].nome = "";
-
                 for (int i = indice; i < dim - 1; i++)
                 {
                     p[i] = p[i + 1];
                 }
 
                 dim--;
-
+                listView.Clear();
                 visualizza(p);
             }
             else
@@ -96,19 +91,15 @@ namespace Struct_prodotto
             }
         }
 
-        // funz no-UI
         public int RicercaSQL()
         {
-            
+            int search = -1;
             for (int i = 0; i < dim; i++)
             {
-                if (p[i].nome.ToString() == Nome.Text)
+                if (p[i].nome == Nome.Text)
                 {
                     search = i;
-                }
-                else
-                {
-                    search = -1;
+                    break;
                 }
             }
 
@@ -117,6 +108,8 @@ namespace Struct_prodotto
 
         private void ModificaNome_Click(object sender, EventArgs e)
         {
+            int indice = RicercaSQL();
+
             float prezzoNuovo = 0;
             if (indice != -1)
             {
@@ -216,5 +209,50 @@ namespace Struct_prodotto
                 File.Delete(path);
             }
         }
+
+        public float Max()
+        {
+            float max = p[0].prezzo;
+
+            for (int i = 0; i < dim; i++)
+            {
+                if (p[i].prezzo > max)
+                {
+                    max = p[i].prezzo;
+                }
+            }
+
+            return max;
+        }
+
+        public float Min()
+        {
+            float min = p[0].prezzo;
+
+            for (int i = 0; i < dim; i++)
+            {
+                if (p[i].prezzo < min)
+                {
+                    min = p[i].prezzo;
+                }
+            }
+
+            return min;
+        }
+
+        private void Massimo_Click(object sender, EventArgs e)
+        {
+            float max = Max();
+
+            MessageBox.Show($"Il prezzo più alto è: €{max}");
+        }
+
+        private void Minimo_Click(object sender, EventArgs e)
+        {
+            float min = Min();
+
+            MessageBox.Show($"Il prezzo più basso è: €{min}");
+        }
+
     }
 }
