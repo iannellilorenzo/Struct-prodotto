@@ -120,6 +120,7 @@ namespace Struct_prodotto
             int indice = RicercaSQL();
 
             float prezzoNuovo = 0;
+
             if (indice != -1)
             {
                 if (Modif.Text != "")
